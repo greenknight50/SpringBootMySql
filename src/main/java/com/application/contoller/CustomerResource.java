@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.application.model.Customer;
 import com.application.service.CustomerService;
@@ -18,7 +19,7 @@ public class CustomerResource {
 	private CustomerService customerService;
 	
 	@RequestMapping(value = "/all", method = RequestMethod.GET)
-	public ArrayList<Customer> getAllCustomers() {
+	public @ResponseBody ArrayList<Customer> getAllCustomers() {
 		ArrayList<Customer> customers = customerService.getAllCustomers();
 		return customers;
 	}
