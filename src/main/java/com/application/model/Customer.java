@@ -1,6 +1,7 @@
 package com.application.model;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -18,17 +19,19 @@ public class Customer {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "customer_id")
-	private long customerId;
+	private Long customerId;
 	
 	@Column(name  = "customer_name")
 	private String customerName;
 	
 	@Column(name = "customer_dob")
-	@Temporal(value = TemporalType.TIMESTAMP)
+	@Temporal(value = TemporalType.DATE)
 	private Date customerDOB;
 	
 	@Column(name = "customer_phone")
 	private String customerPhone;
+	
+	private List<ShippingAddress> shippingAddresses;
 
 	public long getCustomerId() {
 		return customerId;
