@@ -11,8 +11,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
@@ -29,7 +29,8 @@ public class ShippingAddress {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "customer_id", nullable = false)
 	@JsonProperty("customer")
-	@JsonBackReference
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+	@JsonManagedReference
 	private Customer customer;
 
 	@JsonProperty("addressLine1")
