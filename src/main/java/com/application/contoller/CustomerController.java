@@ -13,7 +13,7 @@ import com.application.service.CustomerService;
 
 @Controller
 @RequestMapping("/customer")
-public class CustomerResource {
+public class CustomerController {
 	
 	@Autowired
 	private CustomerService customerService;
