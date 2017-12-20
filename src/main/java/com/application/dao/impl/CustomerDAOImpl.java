@@ -1,6 +1,7 @@
 package com.application.dao.impl;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
@@ -42,10 +43,9 @@ public class CustomerDAOImpl implements CustomerDAO {
 	}
 
 	@Override
-	public ArrayList<Customer> getAllCustomers() throws HibernateException {
+	public List<Customer> getAllCustomers() throws HibernateException {
 		Criteria hCriteria = getSession().createCriteria(Customer.class);
-		ArrayList<Customer> customers = (ArrayList<Customer>) hCriteria.list();
-		return customers;
+		return hCriteria.list();
 	}
 	
 }

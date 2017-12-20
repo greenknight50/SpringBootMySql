@@ -36,11 +36,6 @@ public class Customer {
 	
 	@Column(name = "customer_phone")
 	private String customerPhone;
-	
-	@OneToMany(fetch = FetchType.EAGER, mappedBy = "customer", cascade = CascadeType.ALL)
-	@JsonProperty("shippingAddress")
-	@JsonBackReference
-	private List<ShippingAddress> shippingAddresses;
 
 	public long getCustomerId() {
 		return customerId;
@@ -74,12 +69,4 @@ public class Customer {
 		this.customerPhone = customerPhone;
 	}
 
-	public List<ShippingAddress> getShippingAddresses() {
-		return shippingAddresses;
-	}
-
-	public void setShippingAddresses(List<ShippingAddress> shippingAddresses) {
-		this.shippingAddresses = shippingAddresses;
-	}
-	
 }

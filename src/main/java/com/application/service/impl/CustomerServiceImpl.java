@@ -1,6 +1,6 @@
 package com.application.service.impl;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,7 +16,7 @@ public class CustomerServiceImpl implements CustomerService {
 	private CustomerDAO customerDAO;
 
 	@Override
-	public ArrayList<Customer> getAllCustomers() {
+	public List<Customer> getAllCustomers() {
 		return customerDAO.getAllCustomers();
 	}
 
