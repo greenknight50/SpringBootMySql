@@ -11,6 +11,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -30,7 +31,7 @@ public class ShippingAddress {
 	@JoinColumn(name = "customer_id", nullable = false)
 	@JsonProperty("customer")
 	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-	@JsonManagedReference
+	@JsonBackReference
 	private Customer customer;
 
 	@JsonProperty("addressLine1")
