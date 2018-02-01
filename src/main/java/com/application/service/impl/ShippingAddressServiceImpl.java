@@ -30,4 +30,9 @@ public class ShippingAddressServiceImpl implements ShippingAddressService {
 		return shippingAddressDAO.findByCity(city);
 	}
 
+	@Override
+	public List<ShippingAddress> getShippingAddressByCustomerId(Long customerId) {
+		return shippingAddressDAO.findByCustomer_CustomerId(customerId);
+	}
+
 }

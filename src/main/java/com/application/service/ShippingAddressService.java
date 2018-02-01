@@ -10,4 +10,6 @@ public interface ShippingAddressService {
 	ShippingAddress getShippingAddressById(Long shippingAddressId);
 	
 	List<ShippingAddress> getShippingAddressByCity(String city);
+	
+	List<ShippingAddress> getShippingAddressByCustomerId(Long customerId);
 }

@@ -33,4 +33,9 @@ public class ShippingAddressController {
 	public List<ShippingAddress> getShippingAddressByName(@PathVariable("city") String city) {
 		return shippingAddressService.getShippingAddressByCity(city);
 	}
+	
+	@RequestMapping("/customer/{customerId}")
+	public List<ShippingAddress> getShippingAddressByCustomerId(@PathVariable("customerId") Long customerId) {
+		return shippingAddressService.getShippingAddressByCustomerId(customerId);
+	}
 }

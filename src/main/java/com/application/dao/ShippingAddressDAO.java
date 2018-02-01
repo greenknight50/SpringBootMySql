@@ -12,4 +12,6 @@ public interface ShippingAddressDAO extends JpaRepository<ShippingAddress, Long>
 	
 	ShippingAddress findByAddressLine1(String addressLine1);
 	
+	List<ShippingAddress> findByCustomer_CustomerId(Long customerId);
+	
 }
