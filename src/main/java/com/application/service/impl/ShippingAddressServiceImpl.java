@@ -16,6 +16,11 @@ public class ShippingAddressServiceImpl implements ShippingAddressService {
 	private ShippingAddressDAO shippingAddressDAO;
 	
 	@Override
+	public ShippingAddress saveShippingAddress(ShippingAddress shippingAddress) {
+		return shippingAddressDAO.save(shippingAddress);
+	}
+	
+	@Override
 	public List<ShippingAddress> getAllShippingAddressRecords() {
 		return shippingAddressDAO.findAll();
 	}

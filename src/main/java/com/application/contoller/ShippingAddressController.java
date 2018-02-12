@@ -4,7 +4,9 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.application.model.ShippingAddress;
@@ -37,5 +39,10 @@ public class ShippingAddressController {
 	@RequestMapping("/customer/{customerId}")
 	public List<ShippingAddress> getShippingAddressByCustomerId(@PathVariable("customerId") Long customerId) {
 		return shippingAddressService.getShippingAddressByCustomerId(customerId);
+	}
+	
+	@RequestMapping(value = "/save", method = RequestMethod.POST)
+	public ShippingAddress saveShippingAddress(@RequestBody ShippingAddress shippingAddress) {
+		return shippingAddressService.saveShippingAddress(shippingAddress);
 	}
 }

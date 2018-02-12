@@ -8,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.PostPersist;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -120,5 +121,10 @@ public class ShippingAddress {
 
 	public void setZip(String zip) {
 		this.zip = zip;
+	}
+	
+	@PostPersist
+	public void processPostPersist() {
+		System.out.println("Inside post persist. This shipping id: " + this.shippingAddressId);
 	}
 }
