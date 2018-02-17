@@ -1,21 +1,21 @@
 package com.application.dao.impl;
 
 import java.util.ArrayList;
-
-import javax.persistence.EntityManagerFactory;
+import java.util.List;
 
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.application.dao.CustomerDAO;
 import com.application.model.Customer;
 
 @Repository
+@Transactional
 public class CustomerDAOImpl implements CustomerDAO {
 	
 /*	@Autowired
@@ -43,10 +43,9 @@ public class CustomerDAOImpl implements CustomerDAO {
 	}
 
 	@Override
-	public ArrayList<Customer> getAllCustomers() throws HibernateException {
+	public List<Customer> getAllCustomers() throws HibernateException {
 		Criteria hCriteria = getSession().createCriteria(Customer.class);
-		ArrayList<Customer> customers = (ArrayList<Customer>) hCriteria.list();
-		return customers;
+		return hCriteria.list();
 	}
 	
 }

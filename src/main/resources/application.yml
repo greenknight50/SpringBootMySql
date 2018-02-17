@@ -7,7 +7,7 @@ spring:
     show-sql: true
     properties:
       hibernate:
-      current_session_context_class: org.springframework.orm.hibernate4.SpringSessionContext
+        current_session_context_class: org.springframework.orm.hibernate4.SpringSessionContext
   datasource:
     url: jdbc:mysql://localhost:3306/golfgalaxy?autoReconnect=true&useSSL=false
     username: root
