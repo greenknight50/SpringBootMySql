@@ -9,5 +9,7 @@ import com.application.model.Customer;
 public interface CustomerDAO {
 	
 	List<Customer> getAllCustomers() throws HibernateException;
+	
+	Customer getCustomerById(Long id) throws HibernateException;
 
 }

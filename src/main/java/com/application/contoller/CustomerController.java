@@ -2,6 +2,8 @@ package com.application.contoller;
 
 import java.util.List;
 
+import javax.ws.rs.PathParam;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -25,6 +27,12 @@ public class CustomerController {
 		List<Customer> customers = customerService.getAllCustomers();
 		System.out.println("cusotmers: " + customers);
 		return customers;
+	}
+	
+	@RequestMapping(value = "/id/{id}", method = RequestMethod.GET)
+	public Customer getCustomer(@PathParam("id") Long id, @PathParam("timeZoneId") String timeZoneId) {
+		Customer customer = customerService.getCustomerById(id);
+		return customer;
 	}
 
 }
