@@ -7,6 +7,7 @@ import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -46,6 +47,13 @@ public class CustomerDAOImpl implements CustomerDAO {
 	public List<Customer> getAllCustomers() throws HibernateException {
 		Criteria hCriteria = getSession().createCriteria(Customer.class);
 		return hCriteria.list();
+	}
+	
+	@Override
+	public Customer getCustomerById(Long id) throws HibernateException {
+		Criteria hCriteria = getSession().createCriteria(Customer.class);
+		hCriteria.add(Restrictions.eq("customerId", id));
+		return (Customer) hCriteria.uniqueResult();
 	}
 	
 }
