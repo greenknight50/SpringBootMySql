@@ -14,7 +14,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
@@ -28,8 +27,11 @@ public class ShippingAddress {
 	@JsonProperty("id")
 	private Long shippingAddressId;
 	
+	@Column(name = "customer_id")
+	private Long customerId;
+
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "customer_id", nullable = false)
+	@JoinColumn(name = "customer_id", nullable = false, insertable = false, updatable = false)
 	@JsonProperty("customer")
 	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 	@JsonBackReference
@@ -38,11 +40,11 @@ public class ShippingAddress {
 	@JsonProperty("addressLine1")
 	@Column(name = "address_line1")
 	private String addressLine1;
-	
+
 	@JsonProperty("addressLine2")
 	@Column(name = "address_line2")
 	private String addressLine2;
-	
+
 	@Column(name = "city")
 	@JsonProperty("city")
 	private String city;
@@ -50,11 +52,11 @@ public class ShippingAddress {
 	@JsonProperty("state")
 	@Column(name = "state")
 	private String state;
-	
+
 	@Column(name = "country")
 	@JsonProperty("country")
 	private String country;
-	
+
 	@Column(name = "zip")
 	@JsonProperty("zip")
 	private String zip;
@@ -65,6 +67,14 @@ public class ShippingAddress {
 
 	public void setShippingAddressId(Long shippingAddressId) {
 		this.shippingAddressId = shippingAddressId;
+	}
+
+	public Long getCustomerId() {
+		return customerId;
+	}
+
+	public void setCustomerId(Long customerId) {
+		this.customerId = customerId;
 	}
 
 	public Customer getCustomer() {
@@ -122,7 +132,7 @@ public class ShippingAddress {
 	public void setZip(String zip) {
 		this.zip = zip;
 	}
-	
+
 	@PostPersist
 	public void processPostPersist() {
 		System.out.println("Inside post persist. This shipping id: " + this.shippingAddressId);
